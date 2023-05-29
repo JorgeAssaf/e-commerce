@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import { useCartProduct, useSearchProduct } from '../Store/Product'
 import Navbar from '../components/Navbar'
-import { fetchProducts } from './api/fetchProducts'
+import { fetchProducts } from '../api/fetchProducts'
 
 import type { Products } from '../types'
 
