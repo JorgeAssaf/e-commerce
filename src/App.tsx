@@ -1,6 +1,8 @@
 import { Routes, Route } from 'react-router-dom'
+
 import { Home, Cart, ProductItem } from './pages'
 import Navbar from './components/Navbar'
+
 function App() {
   return (
     <>

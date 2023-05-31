@@ -22,7 +22,7 @@ const Home: React.FC = (): JSX.Element => {
   console.log(products)
 
   return (
-    <div className='antialiased font-sans '>
+    <div className='antialiased '>
       <main className='w-90% m-auto'>
         <h1 className='text-4xl'>Welcome to Open-Commerce</h1>
 
