@@ -1,5 +1,4 @@
-import { Products } from "../types"
-
+import { Products } from '../types'
 
 export const getProductById = async (id: string): Promise<Products> => {
   const response = await fetch(`https://fakestoreapi.com/products/${id}`)
