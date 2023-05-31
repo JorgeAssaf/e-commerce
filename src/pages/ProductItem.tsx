@@ -1,11 +1,12 @@
-import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import { Minus, Plus, ShoppingCart } from 'lucide-react'
+
 import { useCartProduct, useQuatity } from '../Store/Product'
 import { getProductById } from '../api/getProductById'
 
 import type { CartProduct, Products } from '../types'
+import Price from '../components/Price'
 
 const ProductItem = () => {
   const { id } = useParams()
@@ -15,10 +16,18 @@ const ProductItem = () => {
 
   const {
     data: product,
-    isLoading,
     isFetching,
+
     error,
-  } = useQuery('product', () => getProductById(`${id}`))
+  } = useQuery({
+    queryKey: ['product', id],
+    queryFn: () => getProductById(`${id}`),
+    refetchInterval: false,
+    refetchOnWindowFocus: false,
+    onError(err) {
+      console.log(err)
+    },
+  })
 
   const handleCart = (product: Products) => {
     const cartProduct: CartProduct = {
@@ -26,17 +35,18 @@ const ProductItem = () => {
       quantity: quantity,
     }
     addToCart(cartProduct)
+
   }
   if (error) {
     return <div>Something went wrong...</div>
   }
+
   return (
-    <div className='mt-10 w-90% m-auto '>
+    <div className='mt-10 w-90% m-auto  '>
       {isFetching ? (
         <div>Loading...</div>
       ) : (
-        <div >
-
+        <div>
           <img
             className='object-cc object-contain mx-auto h-md '
             src={product?.image}
@@ -47,36 +57,35 @@ const ProductItem = () => {
             <h5 className='text-3xl  text-slate-900'>{product?.title}</h5>
             <div className='mt-2 mb-5 flex items-center justify-between'>
 
-              <p>
-                <span className='text-3xl font-bold text-slate-900'>
-                  {product?.price?.toLocaleString('en-US', {
-                    style: 'currency',
-                    currency: 'USD',
-                  })}
-                </span>
-                {/* <span className='text-sm text-slate-900 line-through'>
+              <Price className='text-3xl font-bold text-slate-900'>
+                {product?.price}
+              </Price>
+              {/* <span className='text-sm text-slate-900 line-through'>
                       $699
                     </span> */}
-              </p>
+
             </div>
             <p className='my-5'>{product?.description}</p>
 
-            <div className='flex gap-6 items-center'>
+            <div className='flex gap-6 items-center text-lg'>
               <button
-                className='bg-slate-900 py-1 px-3 rounded-lg text-white text-xl'
+                className='bg-slate-900 py-2 px-3 rounded-lg text-white '
                 onClick={() => setQuantity(quantity - 1)}
               >
                 <Minus />
               </button>
               <p>{quantity}</p>
               <button
-                className='bg-slate-900 py-1 px-3 rounded-lg text-white text-xl'
+                className='bg-slate-900 py-2 px-3 rounded-lg text-white '
                 onClick={() => setQuantity(quantity + 1)}
               >
                 <Plus />
               </button>
             </div>
-            <button className='btn mt-5 mb-10 items-center' onClick={() => handleCart(product!)}>
+            <button
+              className='btn mt-5 mb-10 items-center'
+              onClick={() => handleCart(product as Products)}
+            >
               <ShoppingCart
                 size={20}
                 className='inline-block  mr-2'
