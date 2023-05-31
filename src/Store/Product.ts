@@ -1,10 +1,11 @@
 import { create } from 'zustand'
-import { Products } from '../types'
+import { CartProduct, Products } from '../types'
+import { persist } from 'zustand/middleware'
 
 interface ProductState {
-  cart: Products[]
-  addToCart: (product: Products) => void
-  removeFromCart: (product: Products) => void
+  cart: CartProduct[]
+  addToCart: (product: CartProduct) => void
+  removeFromCart: (id: number) => void
 }
 
 interface SearchState {
@@ -12,22 +13,45 @@ interface SearchState {
   setQuery: (query: string) => void
 }
 
-export const useCartProduct = create<ProductState>((set, get) => ({
-  cart: [],
-  addToCart: (product) => {
-    if (get().cart.find((item) => item.id === product.id)) return
+interface QuantityState {
+  quantity: number
+  setQuantity: (quantity: number) => void
 
-    set((state) => ({
-      cart: [...state.cart, product],
-    }))
-  },
-  removeFromCart: (product) =>
-    set((state) => ({
-      cart: state.cart.filter((item) => item.id !== product.id),
-    })),
-}))
+}
+
+export const useCartProduct = create(persist<ProductState>(
+  (set, get) => ({
+    cart: [],
+    addToCart: (product) => {
+      if (get().cart.find((item) => item.id === product.id)) {
+        return alert('Product already in cart')
+
+      }
+
+      set((state) => ({
+        cart: [product, ...state.cart],
+      }))
+    },
+    removeFromCart: (id) =>
+      set((state) => ({
+        cart: state.cart.filter((item) => item.id !== id),
+      })),
+
+  }),
+  {
+    name: 'cart-storage', // unique name
+    // (optional) by default, 'localStorage' is used
+  }
+)
+)
 
 export const useSearchProduct = create<SearchState>((set) => ({
   query: '',
   setQuery: (query) => set({ query }),
+}))
+export const useQuatity = create<QuantityState>((set) => ({
+  quantity: 1,
+  setQuantity: (quantity) => set({ quantity }),
+
+
 }))
