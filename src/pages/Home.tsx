@@ -1,20 +1,10 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useQuery } from 'react-query'
-import { useCartProduct, useSearchProduct } from '../Store/Product'
-import Navbar from '../components/Navbar'
 import { fetchProducts } from '../api/fetchProducts'
 
-import type { Products } from '../types'
-
 const Home: React.FC = (): JSX.Element => {
-  const [quantity, setQuantity] = useState('')
-
-  const { addToCart } = useCartProduct((state) => state)
-  const { query } = useSearchProduct((state) => state)
-
   const { data: products, isLoading } = useQuery(
-    'product',
+    'products',
     () => fetchProducts(''),
     {
       refetchInterval: false,
@@ -32,8 +22,7 @@ const Home: React.FC = (): JSX.Element => {
   console.log(products)
 
   return (
-    <div className='antialiased font-sans'>
-      <Navbar />
+    <div className='antialiased font-sans '>
       <main className='w-90% m-auto'>
         <h1 className='text-4xl'>Welcome to Open-Commerce</h1>
 
@@ -48,7 +37,7 @@ const Home: React.FC = (): JSX.Element => {
               >
                 <Link
                   className='relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl'
-                  to={`/${product.title}`}
+                  to={`/${product.id}`}
                 >
                   <img
                     className='object-cc object-contain mx-auto'
@@ -60,7 +49,7 @@ const Home: React.FC = (): JSX.Element => {
                 </span> */}
                 </Link>
                 <div className='mt-4 px-5 pb-5'>
-                  <Link to={`/${product.title.replace(/%/g, '-')}`}>
+                  <Link to={`/${product.id}`}>
                     <h5 className='text-xl tracking-tight line-clamp-2 text-slate-900'>
                       {product.title}
                     </h5>
@@ -129,23 +118,12 @@ const Home: React.FC = (): JSX.Element => {
                     </div>
                   </div>
 
-                  <button className='flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:(outline-none ring-4 ring-blue-300)'>
-                    <svg
-                      xmlns='http://www.w3.org/2000/svg'
-                      className='mr-2 h-6 w-6'
-                      fill='none'
-                      viewBox='0 0 24 24'
-                      stroke='currentColor'
-                      strokeWidth='2'
-                    >
-                      <path
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        d='M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z'
-                      />
-                    </svg>
-                    Add to cart
-                  </button>
+                  <Link
+                    to={`/${product.id}`}
+                    className='flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:(outline-none ring-4 ring-blue-300)'
+                  >
+                    Ver producto
+                  </Link>
                 </div>
               </div>
             ))
