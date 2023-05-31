@@ -6,6 +6,9 @@ export interface Products {
   price: number
   rating: Rating
   title: string
+}
+
+export interface CartProduct extends Products {
   quantity: number
 }
 
