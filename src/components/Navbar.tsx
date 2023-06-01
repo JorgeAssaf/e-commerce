@@ -1,8 +1,8 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from 'react-router-dom'
 import { useCartProduct } from '../Store/Product'
-import { MenuIcon, MenuSquare, ShoppingCartIcon } from 'lucide-react'
-import { useState } from 'react'
+import { MenuIcon, ShoppingCartIcon, X } from 'lucide-react'
+import { useEffect, useState } from 'react'
 const Navbar = () => {
   const { loginWithPopup, isLoading, isAuthenticated, logout, user } =
     useAuth0()
@@ -12,6 +12,9 @@ const Navbar = () => {
   const handleNav = () => {
     setNav(!nav)
   }
+  useEffect(() => {
+    document.body.style.overflow = nav ? 'hidden' : 'auto'
+  }, [nav])
   return (
     <div
       className='flex sticky top-0 z-20 bg-white justify-between items-center  text-slate-9
@@ -94,11 +97,9 @@ const Navbar = () => {
             </div>
           </Link>
         )}
-
       </div>
 
       <div className=' flex items-center gap5 md:hidden text-slate-900'>
-
         {isAuthenticated && (
           <Link
             className='flex items-center justify-center rounded-md bg-slate-900 px-3 py-2 text-center  font-medium text-white hover:bg-gray-700 transition'
@@ -116,13 +117,19 @@ const Navbar = () => {
             </div>
           </Link>
         )}
-        <span onClick={handleNav}>{nav ? <MenuIcon size={30} /> : <MenuSquare size={30} />}</span>
+        <span className='z-50 ' onClick={handleNav}>
+          {nav ? (
+            <X className='text-white' size={30} />
+          ) : (
+            <MenuIcon size={30} />
+          )}
+        </span>
       </div>
 
       <ul
         className={
           nav
-            ? 'fixed left-0 top-0 w-85% h-full border-r border-r-gray-900 bg-slate-900 z-11 ease-in-out duration-500'
+            ? 'fixed left-0 top-0 w-full h-full border-r border-r-gray-900 bg-slate-900 z-11 ease-in-out duration-500'
             : 'ease-in-out duration-500 fixed left--100%'
         }
       >
@@ -192,7 +199,6 @@ const Navbar = () => {
             Products
           </Link>
         </li>
-
       </ul>
     </div>
   )
