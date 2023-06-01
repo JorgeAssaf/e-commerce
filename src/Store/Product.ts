@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { CartProduct, Products } from '../types'
+import { CartProduct } from '../types'
 import { persist } from 'zustand/middleware'
 
 interface ProductState {
@@ -16,42 +16,38 @@ interface SearchState {
 interface QuantityState {
   quantity: number
   setQuantity: (quantity: number) => void
-
 }
 
-export const useCartProduct = create(persist<ProductState>(
-  (set, get) => ({
-    cart: [],
-    addToCart: (product) => {
-      if (get().cart.find((item) => item.id === product.id)) {
-        return alert('Product already in cart')
+export const useCartProduct = create(
+  persist<ProductState>(
+    (set, get) => ({
+      cart: [],
+      addToCart: (product) => {
+        if (get().cart.find((item) => item.id === product.id)) {
+          return alert('Product already in cart')
+        }
 
-      }
-
-      set((state) => ({
-        cart: [product, ...state.cart],
-      }))
+        set((state) => ({
+          cart: [product, ...state.cart],
+        }))
+      },
+      removeFromCart: (id) =>
+        set((state) => ({
+          cart: state.cart.filter((item) => item.id !== id),
+        })),
+    }),
+    {
+      name: 'cart-storage', // unique name
+      // (optional) by default, 'localStorage' is used
     },
-    removeFromCart: (id) =>
-      set((state) => ({
-        cart: state.cart.filter((item) => item.id !== id),
-      })),
-
-  }),
-  {
-    name: 'cart-storage', // unique name
-    // (optional) by default, 'localStorage' is used
-  }
-)
+  ),
 )
 
 export const useSearchProduct = create<SearchState>((set) => ({
-  query: '',
+  query: 'Todos',
   setQuery: (query) => set({ query }),
 }))
 export const useQuatity = create<QuantityState>((set) => ({
   quantity: 1,
   setQuantity: (quantity) => set({ quantity }),
-
-
 }))
