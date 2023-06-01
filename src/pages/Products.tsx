@@ -20,7 +20,7 @@ const Products = () => {
 
   return (
     <>
-      <div className='flex items-center justify-center gap-3 '>
+      <div className='flex items-center flex-wrap justify-center gap-3 '>
         {' '}
         <Categories />
         <input

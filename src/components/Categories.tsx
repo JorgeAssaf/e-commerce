@@ -19,7 +19,7 @@ const Categories = () => {
       {isLoading ? (
         <div>Loading...</div>
       ) : (
-        <div className='flex gap-3'>
+        <div className='flex gap-3 flex-wrap'>
           <button
             onClick={(e) => handleQuery(e)}
             className=' items-center focus:bg-slate-500 my-1 rounded-md bg-slate-900 px-5 py-2.5 text-center  font-medium text-white hover:bg-gray-700 transition'
