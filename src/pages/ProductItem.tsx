@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { useQuery } from 'react-query'
+import { useQuery, useQueryClient } from 'react-query'
 import { Minus, Plus, ShoppingCart } from 'lucide-react'
 
 import { useCartProduct, useQuatity } from '../Store/Product'
@@ -10,20 +10,24 @@ import Price from '../components/Price'
 
 const ProductItem = () => {
   const { id } = useParams()
-
+  const queryClient = useQueryClient()
   const { quantity, setQuantity } = useQuatity((state) => state)
   const { addToCart, cart } = useCartProduct((state) => state)
 
   const {
     data: product,
-    isFetching,
-
+    isLoading,
     error,
   } = useQuery({
     queryKey: ['product', id],
     queryFn: () => getProductById(`${id}`),
     refetchInterval: false,
     refetchOnWindowFocus: false,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['product', id] })
+
+    },
+
     onError(err) {
       console.log(err)
     },
@@ -43,7 +47,7 @@ const ProductItem = () => {
 
   return (
     <div className='mt-10 w-90% m-auto  '>
-      {isFetching ? (
+      {isLoading ? (
         <div>Loading...</div>
       ) : (
         <div>
@@ -56,15 +60,14 @@ const ProductItem = () => {
           <div className='max-w-2xl m-auto '>
             <h5 className='text-3xl  text-slate-900'>{product?.title}</h5>
             <div className='mt-2 mb-5 flex items-center justify-between'>
-
               <Price className='text-3xl font-bold text-slate-900'>
                 {product?.price}
               </Price>
               {/* <span className='text-sm text-slate-900 line-through'>
                       $699
                     </span> */}
-
             </div>
+            <span className='badge'>{product?.category}</span>
             <p className='my-5'>{product?.description}</p>
 
             <div className='flex gap-6 items-center text-lg'>
