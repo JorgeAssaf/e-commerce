@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import App from './App.tsx'
 import 'virtual:uno.css'
 import '@unocss/reset/tailwind-compat.css'
-
+import { Auth0ProviderWithNavigate } from './auth0-provider-with-navigate.js.tsx'
 
 const queryClient = new QueryClient()
 
