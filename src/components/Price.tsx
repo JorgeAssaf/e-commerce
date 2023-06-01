@@ -6,10 +6,10 @@ interface PriceProps {
 }
 
 const Price: FC<PriceProps> = ({ children, className }) => {
-  return <p className={className}>{children?.toLocaleString('es-MX', {
+  return <span className={className}>{children?.toLocaleString('es-MX', {
     style: 'currency',
     currency: 'MXN'
-  })}</p>
+  })}</span>
 }
 
 export default Price
