@@ -97,7 +97,7 @@ const Navbar = () => {
 
       </div>
 
-      <div onClick={handleNav} className=' flex items-center gap5 md:hidden text-slate-900'>
+      <div className=' flex items-center gap5 md:hidden text-slate-900'>
 
         {isAuthenticated && (
           <Link
@@ -116,7 +116,7 @@ const Navbar = () => {
             </div>
           </Link>
         )}
-        {nav ? <MenuIcon size={30} /> : <MenuSquare size={30} />}
+        <span onClick={handleNav}>{nav ? <MenuIcon size={30} /> : <MenuSquare size={30} />}</span>
       </div>
 
       <ul
