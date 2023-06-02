@@ -5,15 +5,17 @@ import { presetDaisy } from 'unocss-preset-daisy'
 
 export default defineConfig({
   presets: [
+
     presetUno(),
     presetDaisy({
       themes: ['light'],
+
     }),
     presetWebFonts({
       // use axios with an https proxy
       provider: 'fontshare',
       fonts: {
-        sans: 'Satoshi',
+        sans: ['Satoshi', 'Satoshi:400,500,700,900'],
         mono: ['Satoshi', 'Satoshi:400,500,700,900'],
       },
     }),
