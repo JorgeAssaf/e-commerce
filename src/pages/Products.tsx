@@ -1,10 +1,10 @@
 import { useQuery } from 'react-query'
 import { fetchProducts } from '../api/fetchProducts'
 import { Link } from 'react-router-dom'
+import { Ring } from '@uiball/loaders'
 import Categories from '../components/Categories'
 import { useSearchProduct } from '../Store/Product'
 import Price from '../components/Price'
-
 const Products = () => {
   const { query, setQuery } = useSearchProduct((state) => state)
   const { data: products, isLoading } = useQuery({
@@ -16,7 +16,6 @@ const Products = () => {
       setQuery('Todos')
     },
   })
-
 
   return (
     <>
@@ -34,7 +33,12 @@ const Products = () => {
       </div>
       <section className='grid m-auto justify-items-center place-content-center grid-cols-1 gap-10   md:grid-cols-2 lg:grid-cols-4'>
         {isLoading ? (
-          <div>Loading...</div>
+          <div
+            className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+          '
+          >
+            <Ring size={80} lineWeight={5} speed={2} color='black' />
+          </div>
         ) : (
           products
             ?.filter((product) => {
@@ -121,9 +125,7 @@ const Products = () => {
                     </span>
                   </div>
                   <div className='mt-2 mb-5 flex gap-1 items-center justify-between'>
-
                     <p className='text-2xl font-bold text-slate-900'>
-
                       <Price className=' font-bold text-slate-900'>
                         {product.price}
                       </Price>
@@ -132,12 +134,11 @@ const Products = () => {
                       $699
                     </span> */}
                     </p>
-
                   </div>
 
                   <Link
                     to={`/${product.id}`}
-                    className='flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:(outline-none ring-4 ring-blue-300)'
+                    className='flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 '
                   >
                     Ver producto
                   </Link>
