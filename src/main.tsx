@@ -16,11 +16,9 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         domain='dev-a0nqbtp3nfvu0u0b.us.auth0.com'
         clientId='2AjFDw2uJ7pY2yu4YiETdaInm4QJo6MO'
       >
-
         <QueryClientProvider client={queryClient}>
           <App />
         </QueryClientProvider>
-
       </Auth0Provider>
     </BrowserRouter>
   </React.StrictMode>,

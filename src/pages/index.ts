@@ -1,3 +1,4 @@
 export { default as Cart } from './Cart'
 export { default as Home } from './Home'
 export { default as ProductItem } from './ProductItem'
+export { default as Products } from './Products'
