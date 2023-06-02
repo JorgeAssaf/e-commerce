@@ -3,6 +3,10 @@ import { Routes, Route, useNavigate, useLocation } from 'react-router-dom'
 import { Home, Cart, ProductItem } from './pages'
 import Navbar from './components/Navbar'
 import { ArrowLeft } from 'lucide-react'
+
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Products from './pages/Products'
 
 function App() {
@@ -12,7 +16,7 @@ function App() {
   return (
     <>
       <Navbar />
-
+      <ToastContainer />
       <div className='w-90% mx-auto mt-5 '>
         <span
           className={`${pathname === '/' ? 'hidden' : 'flex'} mb-5`}

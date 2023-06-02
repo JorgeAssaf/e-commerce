@@ -2,6 +2,8 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useCartProduct } from '../Store/Product'
+
+import { toast } from 'react-toastify';
 import type { CartProduct } from '../types'
 import Price from '../components/Price'
 
@@ -10,6 +12,7 @@ const Cart = () => {
   const { isAuthenticated, isLoading } = useAuth0()
   const { cart } = useCartProduct((state) => state)
   const { removeFromCart } = useCartProduct((state) => state)
+  const { reset } = useCartProduct((state) => state)
   useEffect(() => {
     if (!isAuthenticated && !isLoading) {
       navigate('/')
@@ -21,6 +24,24 @@ const Cart = () => {
   const total = cart.reduce((acc, curr) => {
     return acc + curr.price * curr.quantity
   }, 0)
+  const handleCheckout = () => {
+    //refresh the page
+    reset()
+    navigate('/')
+
+    toast.success('Checkout successfull', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+
+  }
+
   return (
     <div>
       <h1 className='text-3xl font-bold'>Cart</h1>
@@ -73,7 +94,9 @@ const Cart = () => {
                   )
                 })}
                 <Price className='text-2xl my-3 font-medium'>{total}</Price>
-                <button className='btn'>Checkout</button>
+                <button onClick={handleCheckout} className='btn'>
+                  Checkout
+                </button>
               </div>
             ) : (
               <p className='text-2xl font-medium'>Your cart is empty</p>

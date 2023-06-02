@@ -6,6 +6,8 @@ interface ProductState {
   cart: CartProduct[]
   addToCart: (product: CartProduct) => void
   removeFromCart: (id: number) => void
+
+  reset: () => void
 }
 
 interface SearchState {
@@ -35,6 +37,16 @@ export const useCartProduct = create(
         set((state) => ({
           cart: state.cart.filter((item) => item.id !== id),
         })),
+
+
+      reset: () => {
+        set(() => ({
+          cart: [],
+        }))
+      }
+
+
+
     }),
     {
       name: 'cart-storage', // unique name
