@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useQuery, useQueryClient } from 'react-query'
 import { Minus, Plus, ShoppingCart } from 'lucide-react'
@@ -5,8 +6,10 @@ import { Minus, Plus, ShoppingCart } from 'lucide-react'
 import { useCartProduct, useQuatity } from '../Store/Product'
 import { getProductById } from '../api/getProductById'
 
-import type { CartProduct, Products } from '../types'
 import Price from '../components/Price'
+import { Ring } from '@uiball/loaders'
+
+import type { CartProduct, Products } from '../types'
 
 const ProductItem = () => {
   const { id } = useParams()
@@ -25,21 +28,21 @@ const ProductItem = () => {
     refetchOnWindowFocus: false,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['product', id] })
-
     },
 
     onError(err) {
       console.log(err)
     },
   })
-
+  useEffect(() => {
+    setQuantity(1)
+  }, [])
   const handleCart = (product: Products) => {
     const cartProduct: CartProduct = {
       ...product,
       quantity: quantity,
     }
     addToCart(cartProduct)
-
   }
   if (error) {
     return <div>Something went wrong...</div>
@@ -48,7 +51,12 @@ const ProductItem = () => {
   return (
     <div className='mt-10 w-90% m-auto  '>
       {isLoading ? (
-        <div>Loading...</div>
+        <div
+          className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+          '
+        >
+          <Ring size={80} lineWeight={5} speed={2} color='black' />
+        </div>
       ) : (
         <div>
           <img

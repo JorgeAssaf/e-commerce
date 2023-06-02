@@ -1,6 +1,7 @@
 import { useQuery } from 'react-query'
 import { getCategories } from '../api/getCategories'
 import { useSearchProduct } from '../Store/Product'
+import { Ring } from '@uiball/loaders'
 
 const Categories = () => {
   const { data: categories, isLoading } = useQuery({
@@ -17,7 +18,9 @@ const Categories = () => {
   return (
     <div>
       {isLoading ? (
-        <div>Loading...</div>
+        <div>
+          <Ring size={40} lineWeight={5} speed={2} color='black' />
+        </div>
       ) : (
         <div className='flex gap-3 flex-wrap'>
           <button

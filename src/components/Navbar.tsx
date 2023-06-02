@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useCartProduct } from '../Store/Product'
 import { MenuIcon, ShoppingCartIcon, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { Ring } from '@uiball/loaders'
 const Navbar = () => {
   const { loginWithPopup, isLoading, isAuthenticated, logout, user } =
     useAuth0()
@@ -27,7 +28,7 @@ const Navbar = () => {
             className='flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center  font-medium text-white hover:bg-gray-700 transition'
             disabled
           >
-            Loading...
+            <Ring size={20} lineWeight={5} speed={2} color='white' />
           </button>
         ) : isAuthenticated ? (
           <div className='dropdown'>
@@ -142,7 +143,12 @@ const Navbar = () => {
               className='flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center  font-medium text-white hover:bg-gray-700 transition'
               disabled
             >
-              Loading...
+              <div
+                className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+          '
+              >
+                <Ring size={15} lineWeight={5} speed={2} color='white' />
+              </div>
             </button>
           ) : isAuthenticated ? (
             <div className='dropdown'>

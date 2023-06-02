@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import { useQuery } from 'react-query'
+import { Ring } from '@uiball/loaders'
 import { fetchProducts } from '../api/fetchProducts'
 import Price from '../components/Price'
-
 const Home: React.FC = (): JSX.Element => {
   const { data: products, isLoading } = useQuery(
     'products',
@@ -28,7 +28,15 @@ const Home: React.FC = (): JSX.Element => {
 
       <section className='grid justify-items-center place-content-center grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4'>
         {isLoading ? (
-          <div>Loading...</div>
+          <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+          '>
+
+            <Ring
+              size={80}
+              lineWeight={5}
+              speed={2}
+              color="black"
+            /></div>
         ) : (
           products?.map((product) => (
             <div
@@ -117,7 +125,7 @@ const Home: React.FC = (): JSX.Element => {
 
                 <Link
                   to={`/${product.id}`}
-                  className='flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:(outline-none ring-4 ring-blue-300)'
+                  className='flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 '
                 >
                   Ver producto
                 </Link>
