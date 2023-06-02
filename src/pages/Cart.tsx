@@ -3,9 +3,10 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useCartProduct } from '../Store/Product'
 
-import { toast } from 'react-toastify';
-import type { CartProduct } from '../types'
+import { toast } from 'react-toastify'
 import Price from '../components/Price'
+
+import type { CartProduct } from '../types'
 
 const Cart = () => {
   const navigate = useNavigate()
@@ -30,16 +31,15 @@ const Cart = () => {
     navigate('/')
 
     toast.success('Checkout successfull', {
-      position: "top-right",
+      position: 'top-right',
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: "dark",
-    });
-
+      theme: 'dark',
+    })
   }
 
   return (
