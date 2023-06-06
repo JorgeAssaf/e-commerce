@@ -39,13 +39,13 @@ const Home: React.FC = (): JSX.Element => {
           <SwiperSlide>
             <div className=' min-h-lg max-h-lg mens-image '>
               <div className='flex justify-center flex-col gap-5 items-center h-600px '>
-                <h2 className='md:text-5xl text-3xl text-white text-center'>
+                <h2 className='md:text-5xl text-2xl text-white text-center'>
                   Men's clothing
                 </h2>
 
                 <Link
                   to={`/categories/men's clothing`}
-                  className='flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center  font-medium text-white hover:bg-gray-700 '
+                  className='flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center md:text-base text-sm  font-medium text-white hover:bg-gray-700 '
                 >
                   Ver categoria
                 </Link>
@@ -55,13 +55,13 @@ const Home: React.FC = (): JSX.Element => {
           <SwiperSlide>
             <div className=' min-h-lg max-h-lg women-image '>
               <div className='flex justify-center flex-col gap-5 items-center h-600px '>
-                <h2 className='md:text-5xl text-3xl text-white text-center'>
+                <h2 className='md:text-5xl text-2xl text-white text-center'>
                   Women's clothing
                 </h2>
 
                 <Link
                   to={"/categories/women's clothing"}
-                  className='flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center  font-medium text-white hover:bg-gray-700 '
+                  className='flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center md:text-base text-sm  font-medium text-white hover:bg-gray-700 '
                 >
                   Ver categoria
                 </Link>
@@ -71,13 +71,13 @@ const Home: React.FC = (): JSX.Element => {
           <SwiperSlide>
             <div className=' min-h-lg max-h-lg electronic-image '>
               <div className='flex justify-center flex-col gap-5 items-center h-600px '>
-                <h2 className='md:text-5xl text-3xl text-white text-center'>
+                <h2 className='md:text-5xl text-2xl text-white text-center'>
                   Electronic Devices
                 </h2>
 
                 <Link
                   to={'/categories/electronics'}
-                  className='flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center font-medium text-white hover:bg-gray-700 '
+                  className='flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center md:text-base text-sm  font-medium text-white hover:bg-gray-700 '
                 >
                   Ver categoria
                 </Link>
