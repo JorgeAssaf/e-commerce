@@ -84,7 +84,7 @@ const Cart = () => {
           {/* Columna del total de la compra */}
           <div className='w-full sticky top-20 h-lg scroll-smooth'>
 
-            <h3 className='text-xl font-medium mb-3'>Resumen :</h3>
+            <h3 className='text-xl font-medium my-5'>Resumen :</h3>
             {cart.length > 0 ? (
               <div className='flex flex-col gap-2'>
                 {cart.map((product: CartProduct) => {
