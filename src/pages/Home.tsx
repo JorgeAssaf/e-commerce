@@ -24,8 +24,8 @@ const Home: React.FC = (): JSX.Element => {
 
   return (
     <main className='antialiased '>
-      <h2 className='text-4xl'>
-        Ultimas <span className='text-slate-900'>Categorias</span>
+      <h2 className='text-3xl font-medium'>
+        Ultimas Categorias
       </h2>
 
       <div className='flex bg-white md:min-h-md h-auto overflow-hidden my-10 shadow rounded-xl min-w-full w-full   mx-auto  justify-between items-center '>
@@ -39,23 +39,13 @@ const Home: React.FC = (): JSX.Element => {
           <SwiperSlide>
             <div className=' min-h-lg max-h-lg mens-image '>
               <div className='flex justify-center flex-col gap-5 items-center h-600px '>
-                <h2 className='text-4xl text-white text-center'>
+                <h2 className='md:text-5xl text-3xl text-white text-center'>
                   Men's clothing
                 </h2>
-                <p
-                  className='
-                text-white
-                text-center
-                text-lg
-                font-medium
-                '
-                >
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Quisquam, voluptatum.
-                </p>
+
                 <Link
                   to={`/categories/men's clothing`}
-                  className='flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 '
+                  className='flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center  font-medium text-white hover:bg-gray-700 '
                 >
                   Ver categoria
                 </Link>
@@ -65,23 +55,13 @@ const Home: React.FC = (): JSX.Element => {
           <SwiperSlide>
             <div className=' min-h-lg max-h-lg women-image '>
               <div className='flex justify-center flex-col gap-5 items-center h-600px '>
-                <h2 className='text-4xl text-white text-center'>
+                <h2 className='md:text-5xl text-3xl text-white text-center'>
                   Women's clothing
                 </h2>
-                <p
-                  className='
-                text-white
-                text-center
-                text-lg
-                font-medium
-                '
-                >
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Quisquam, voluptatum.
-                </p>
+
                 <Link
                   to={"/categories/women's clothing"}
-                  className='flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 '
+                  className='flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center  font-medium text-white hover:bg-gray-700 '
                 >
                   Ver categoria
                 </Link>
@@ -91,23 +71,13 @@ const Home: React.FC = (): JSX.Element => {
           <SwiperSlide>
             <div className=' min-h-lg max-h-lg electronic-image '>
               <div className='flex justify-center flex-col gap-5 items-center h-600px '>
-                <h2 className='text-4xl text-white text-center'>
+                <h2 className='md:text-5xl text-3xl text-white text-center'>
                   Electronic Devices
                 </h2>
-                <p
-                  className='
-                text-white
-                text-center
-                text-lg
-                font-medium
-                '
-                >
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Quisquam, voluptatum.
-                </p>
+
                 <Link
                   to={'/categories/electronics'}
-                  className='flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 '
+                  className='flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center font-medium text-white hover:bg-gray-700 '
                 >
                   Ver categoria
                 </Link>
@@ -116,10 +86,10 @@ const Home: React.FC = (): JSX.Element => {
           </SwiperSlide>
         </Swiper>
       </div>
-      <h2 className='text-3xl'>
-        Ultimos <span className='text-slate-900'>Productos</span>
-      </h2>
 
+      <h3 className='text-3xl font-medium'>
+        Ultimos Productos
+      </h3>
       <section className='grid justify-items-center place-content-center grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4'>
 
         {isLoading ? (

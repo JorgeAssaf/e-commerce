@@ -16,12 +16,13 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     document.body.style.overflow = nav ? 'hidden' : 'auto'
   }, [nav])
+
   return (
     <div
       className='flex sticky top-0 z-20 bg-white justify-between items-center  text-slate-9
      px-5% mx-auto py-5 px-4 text-white'
     >
-      <h1 className=' text-3xl font-bold z-11 text-slate-900'>Shop</h1>
+      <h1 className=' text-4xl font-bold z-11 text-slate-900'>Shop</h1>
       <div className='flex-row gap-10 items-center hidden md:flex'>
         {isLoading ? (
           <button
