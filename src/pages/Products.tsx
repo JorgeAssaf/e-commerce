@@ -30,6 +30,11 @@ const Products = () => {
           name='search'
           id='search '
         />
+        {/* Min Price : {query}
+        <input type="range" name="price" id="price" onChange={
+          (e) => setQuery(e.target.value)
+        } />
+        Max Price : 1000 */}
       </div>
       <section className='grid m-auto justify-items-center place-content-center grid-cols-1 gap-10   md:grid-cols-2 lg:grid-cols-4'>
         {isLoading ? (
@@ -45,8 +50,8 @@ const Products = () => {
               if (query === 'Todos') return product
               else {
                 return (
-                  product.title.toLowerCase().includes(query.toLowerCase()) ||
-                  product.category.toLowerCase().includes(query.toLowerCase())
+                  [product.category, product.title].includes(query) ||
+                  product.title.toLowerCase().includes(query.toLowerCase())
                 )
               }
             })
