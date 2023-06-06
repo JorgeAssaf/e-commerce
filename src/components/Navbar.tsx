@@ -4,7 +4,7 @@ import { useCartProduct } from '../Store/Product'
 import { MenuIcon, ShoppingCartIcon, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Ring } from '@uiball/loaders'
-const Navbar = () => {
+const Navbar: React.FC = () => {
   const { loginWithPopup, isLoading, isAuthenticated, logout, user } =
     useAuth0()
   const { cart } = useCartProduct((state) => state)
