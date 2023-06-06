@@ -10,12 +10,17 @@ import './index.css'
 
 const queryClient = new QueryClient()
 
+const domain: string = import.meta.env.VITE_AUTH0_DOMAIN
+const clientId: string = import.meta.env.VITE_AUTH0_CLIENT_ID
+
+
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
       <Auth0Provider
-        domain='dev-a0nqbtp3nfvu0u0b.us.auth0.com'
-        clientId='2AjFDw2uJ7pY2yu4YiETdaInm4QJo6MO'
+        domain={domain}
+        clientId={clientId}
       >
         <QueryClientProvider client={queryClient}>
           <App />
