@@ -14,13 +14,14 @@ const Cart = () => {
   const { cart } = useCartProduct((state) => state)
   const { removeFromCart } = useCartProduct((state) => state)
   const { reset } = useCartProduct((state) => state)
+
   useEffect(() => {
     if (!isAuthenticated && !isLoading) {
       navigate('/')
     }
-    return
-  }, [isAuthenticated, navigate, isLoading])
-  console.log(cart)
+  }, [isAuthenticated, isLoading, navigate])
+
+
 
   const total = cart.reduce((acc, curr) => {
     return acc + curr.price * curr.quantity
@@ -52,11 +53,12 @@ const Cart = () => {
           <div className='w-3/4 md:block hidden '>
             {cart.map((product: CartProduct) => {
               return (
-                <div className='  p-4 mb-4' key={product.id}>
+                <div className='p-4 mb-4' key={product.id}>
                   <h5 className='text-xl  text-slate-900'>{product?.title}</h5>
 
                   <img
                     className='object-cc object-contain w-60 h-60 my-5'
+                    loading='lazy'
                     src={product?.image}
                     alt={product?.title}
                   />
@@ -87,13 +89,26 @@ const Cart = () => {
               <div className='flex flex-col gap-2'>
                 {cart.map((product: CartProduct) => {
                   return (
-                    <div className='flex justify-between' key={product.id}>
-                      <Price>{product.title}</Price>
-                      <Price>{product.price * product.quantity}</Price>
+                    <div
+                      className='flex justify-between flex-col  gap-1'
+                      key={product.id}
+                    >
+                      <p className='text-lg font-medium'>{product.title}</p>
+                      <span className='font-bold'>
+                        {product.quantity} x {product.price}
+                      </span>
+                      <span>
+                        Subtotal:{' '}
+                        <Price className='font-medium'>
+                          {product.price * product.quantity}
+                        </Price>
+                      </span>
                     </div>
                   )
                 })}
-                <Price className='text-2xl my-3 font-medium'>{total}</Price>
+                <span className='text-2xl my-3 font-medium'>
+                  Total: <Price>{total}</Price>{' '}
+                </span>
                 <button onClick={handleCheckout} className='btn'>
                   Checkout
                 </button>

@@ -36,7 +36,7 @@ const ProductItem = () => {
   })
   useEffect(() => {
     setQuantity(1)
-  }, [])
+  }, [setQuantity])
   const handleCart = (product: Products) => {
     const cartProduct: CartProduct = {
       ...product,
