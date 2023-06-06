@@ -3,6 +3,15 @@ import { useQuery } from 'react-query'
 import { Ring } from '@uiball/loaders'
 import { fetchProducts } from '../api/fetchProducts'
 import Price from '../components/Price'
+import { Swiper, SwiperSlide } from 'swiper/react'
+// import required modules
+
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper'
+
+// Import Swiper styles
+import 'swiper/css'
+import 'swiper/css/navigation'
+
 const Home: React.FC = (): JSX.Element => {
   const { data: products, isLoading } = useQuery(
     'products',
@@ -12,31 +21,112 @@ const Home: React.FC = (): JSX.Element => {
       refetchOnWindowFocus: false,
     },
   )
-  // const slugify = (str: string) =>
-  //   str
-  //     .toLowerCase()
-  //     .trim()
-  //     .replace(/[^\w\s-]/g, '')
-  //     .replace(/[\s_-]+/g, '-')
-  //     .replace(/^-+|-+$/g, '')
 
-  console.log(products)
+
 
   return (
     <main className='antialiased '>
-      <h1 className='text-4xl'>Welcome to Open-Commerce</h1>
+      <h1 className='text-4xl'>
+        Ultimas <span className='text-slate-900'>Categorias</span>
+      </h1>
 
+      <div className='flex bg-white md:min-h-md h-auto overflow-hidden my-10 shadow rounded-xl min-w-full w-full   mx-auto  justify-between items-center '>
+        <Swiper
+          // install Swiper modules
+          modules={[Navigation, Pagination, Scrollbar, A11y]}
+          spaceBetween={50}
+          slidesPerView={1}
+          navigation
+        >
+          <SwiperSlide>
+            <div className=' min-h-lg max-h-lg mens-image '>
+              <div className='flex justify-center flex-col gap-5 items-center h-600px '>
+                <h1 className='text-4xl text-white text-center'>
+                  Men's clothing
+                </h1>
+                <p
+                  className='
+                text-white
+                text-center
+                text-lg
+                font-medium
+                '
+                >
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Quisquam, voluptatum.
+                </p>
+                <Link
+                  to={`/categories/men's clothing`}
+                  className='flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 '
+                >
+                  Ver categoria
+                </Link>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className=' min-h-lg max-h-lg women-image '>
+              <div className='flex justify-center flex-col gap-5 items-center h-600px '>
+                <h2 className='text-4xl text-white text-center'>
+                  Women's clothing
+                </h2>
+                <p
+                  className='
+                text-white
+                text-center
+                text-lg
+                font-medium
+                '
+                >
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Quisquam, voluptatum.
+                </p>
+                <Link
+                  to={'/categories/women\'s clothing'}
+                  className='flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 '
+                >
+                  Ver categoria
+                </Link>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className=' min-h-lg max-h-lg electronic-image '>
+              <div className='flex justify-center flex-col gap-5 items-center h-600px '>
+                <h2 className='text-4xl text-white text-center'>
+                  Electronic Devices
+                </h2>
+                <p
+                  className='
+                text-white
+                text-center
+                text-lg
+                font-medium
+                '
+                >
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Quisquam, voluptatum.
+                </p>
+                <Link
+                  to={'/categories/electronics'}
+                  className='flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 '
+                >
+                  Ver categoria
+                </Link>
+
+              </div>
+            </div>
+          </SwiperSlide>
+        </Swiper>
+      </div>
       <section className='grid justify-items-center place-content-center grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4'>
         {isLoading ? (
-          <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
-          '>
-
-            <Ring
-              size={80}
-              lineWeight={5}
-              speed={2}
-              color="black"
-            /></div>
+          <div
+            className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+          '
+          >
+            <Ring size={80} lineWeight={5} speed={2} color='black' />
+          </div>
         ) : (
           products?.map((product) => (
             <div
@@ -134,7 +224,7 @@ const Home: React.FC = (): JSX.Element => {
           ))
         )}
       </section>
-    </main>
+    </main >
   )
 }
 

@@ -1,0 +1,55 @@
+.mens-image {
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(33, 34, 33, 0.603),
+      rgba(43, 45, 46, 0.521)
+    ),
+    url('./assets/imagen1.avif');
+
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+.electronic-image {
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(33, 34, 33, 0.603),
+      rgba(43, 45, 46, 0.521)
+    ),
+    url('./assets/tecnologie.avif');
+
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+.women-image {
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(33, 34, 33, 0.603),
+      rgba(43, 45, 46, 0.521)
+    ),
+    url('./assets/women-image.avif');
+
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff;
+
+  &::after {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 768px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    &::after {
+      font-size: 1.5rem;
+    }
+  }
+}

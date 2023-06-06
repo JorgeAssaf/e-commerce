@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import App from './App.tsx'
 import 'virtual:uno.css'
 import '@unocss/reset/tailwind-compat.css'
+import './index.css'
 
 const queryClient = new QueryClient()
 
