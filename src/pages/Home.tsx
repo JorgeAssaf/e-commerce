@@ -22,8 +22,6 @@ const Home: React.FC = (): JSX.Element => {
     },
   )
 
-
-
   return (
     <main className='antialiased '>
       <h1 className='text-4xl'>
@@ -82,7 +80,7 @@ const Home: React.FC = (): JSX.Element => {
                   Quisquam, voluptatum.
                 </p>
                 <Link
-                  to={'/categories/women\'s clothing'}
+                  to={"/categories/women's clothing"}
                   className='flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 '
                 >
                   Ver categoria
@@ -113,7 +111,6 @@ const Home: React.FC = (): JSX.Element => {
                 >
                   Ver categoria
                 </Link>
-
               </div>
             </div>
           </SwiperSlide>
@@ -224,7 +221,7 @@ const Home: React.FC = (): JSX.Element => {
           ))
         )}
       </section>
-    </main >
+    </main>
   )
 }
 
