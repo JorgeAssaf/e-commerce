@@ -138,7 +138,7 @@ const Navbar: React.FC = () => {
         <li>
           <h1 className='w-full text-3xl font-bold text-white m-4'>Shop</h1>
         </li>
-        <li className='p-4 border-b border-gray-600'>
+        <li className='p-4 border-b  flex justify-center border-gray-600'>
           {isLoading ? (
             <button
               className='flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center  font-medium text-white hover:bg-gray-700 transition'
@@ -155,7 +155,7 @@ const Navbar: React.FC = () => {
             <div className='dropdown'>
               <div
                 tabIndex={0}
-                className='flex gap-2 items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center  font-medium text-white hover:bg-gray-700 '
+                className='flex gap-2 items-center  rounded-md bg-slate-900 px-5 py-2.5 text-center  font-medium text-white hover:bg-gray-700 '
               >
                 <img
                   className='rounded-full w-6 h-6'
@@ -168,7 +168,7 @@ const Navbar: React.FC = () => {
 
               <ul
                 tabIndex={0}
-                className='dropdown-content menu  shadow font-medium bg-slate-900 text-white 
+                className='dropdown-content menu  shadow font-medium  bg-slate-900 text-white 
                  w-40 mt-2 rounded-md  absolute top-10 right-0 z-10'
               >
                 <li>
@@ -192,7 +192,7 @@ const Navbar: React.FC = () => {
         </li>
         <li className='p-4 border-b border-gray-600'>
           <Link
-            className='flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center  font-medium text-white hover:bg-gray-700 transition'
+            className='flex items-center justify-center rounded-md  px-5 py-2.5 text-center  font-medium text-white hover:bg-gray-700 transition'
             to='/'
           >
             Home
@@ -200,7 +200,7 @@ const Navbar: React.FC = () => {
         </li>
         <li className='p-4 border-b border-gray-600'>
           <Link
-            className='flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center  font-medium text-white hover:bg-gray-700 transition'
+            className='flex items-center justify-center rounded-md  px-5 py-2.5 text-center  font-medium text-white hover:bg-gray-700 transition'
             to='/products'
           >
             Products
