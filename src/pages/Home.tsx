@@ -24,9 +24,9 @@ const Home: React.FC = (): JSX.Element => {
 
   return (
     <main className='antialiased '>
-      <h1 className='text-4xl'>
+      <h2 className='text-4xl'>
         Ultimas <span className='text-slate-900'>Categorias</span>
-      </h1>
+      </h2>
 
       <div className='flex bg-white md:min-h-md h-auto overflow-hidden my-10 shadow rounded-xl min-w-full w-full   mx-auto  justify-between items-center '>
         <Swiper
@@ -39,9 +39,9 @@ const Home: React.FC = (): JSX.Element => {
           <SwiperSlide>
             <div className=' min-h-lg max-h-lg mens-image '>
               <div className='flex justify-center flex-col gap-5 items-center h-600px '>
-                <h1 className='text-4xl text-white text-center'>
+                <h2 className='text-4xl text-white text-center'>
                   Men's clothing
-                </h1>
+                </h2>
                 <p
                   className='
                 text-white
@@ -116,7 +116,12 @@ const Home: React.FC = (): JSX.Element => {
           </SwiperSlide>
         </Swiper>
       </div>
+      <h2 className='text-3xl'>
+        Ultimos <span className='text-slate-900'>Productos</span>
+      </h2>
+
       <section className='grid justify-items-center place-content-center grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4'>
+
         {isLoading ? (
           <div
             className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
@@ -125,6 +130,7 @@ const Home: React.FC = (): JSX.Element => {
             <Ring size={80} lineWeight={5} speed={2} color='black' />
           </div>
         ) : (
+
           products?.map((product) => (
             <div
               key={product.id}

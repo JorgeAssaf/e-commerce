@@ -53,3 +53,13 @@
     }
   }
 }
+
+::-webkit-scrollbar {
+  background-color: #ffffff;
+  width: 10px;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #0f172a;
+  border-radius: 5px;
+}

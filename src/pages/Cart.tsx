@@ -44,7 +44,7 @@ const Cart = () => {
 
   return (
     <div>
-      <h1 className='text-3xl font-bold'>Cart</h1>
+      <h3 className='text-3xl font-bold'>Cart</h3>
 
       <section className='grid gap-5 '>
         <div className='flex'>
