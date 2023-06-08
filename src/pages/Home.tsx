@@ -1,16 +1,17 @@
 import { Link } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import { Ring } from '@uiball/loaders'
-import { fetchProducts } from '../api/fetchProducts'
-import Price from '../components/Price'
 import { Swiper, SwiperSlide } from 'swiper/react'
 // import required modules
+import { Navigation, A11y, Autoplay } from 'swiper'
+import { fetchProducts } from '../api/fetchProducts'
 
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper'
+import Price from '../components/Price'
 
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/navigation'
+import 'swiper/css/autoplay'
 
 const Home: React.FC = (): JSX.Element => {
   const { data: products, isLoading } = useQuery(
@@ -24,20 +25,22 @@ const Home: React.FC = (): JSX.Element => {
 
   return (
     <main className='antialiased '>
-      <h2 className='text-3xl font-medium'>
-        Ultimas Categorias
-      </h2>
+      <h2 className='text-3xl font-medium'>Ultimas Categorias</h2>
 
       <div className='flex bg-white md:min-h-md h-auto overflow-hidden my-10 shadow rounded-xl min-w-full w-full   mx-auto  justify-between items-center '>
         <Swiper
           // install Swiper modules
-          modules={[Navigation, Pagination, Scrollbar, A11y]}
+          modules={[Autoplay, Navigation, A11y]}
           spaceBetween={50}
           slidesPerView={1}
           navigation
+          autoplay={{
+            delay: 3500,
+            disableOnInteraction: false,
+          }}
         >
           <SwiperSlide>
-            <div className=' min-h-lg max-h-lg mens-image '>
+            <div className=' min-h-lg max-h-lg rounded-xl mens-image '>
               <div className='flex justify-center flex-col gap-5 items-center h-600px '>
                 <h2 className='md:text-5xl text-2xl text-white text-center'>
                   Men's clothing
@@ -53,7 +56,7 @@ const Home: React.FC = (): JSX.Element => {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className=' min-h-lg max-h-lg women-image '>
+            <div className=' min-h-lg max-h-lg rounded-xl women-image '>
               <div className='flex justify-center flex-col gap-5 items-center h-600px '>
                 <h2 className='md:text-5xl text-2xl text-white text-center'>
                   Women's clothing
@@ -69,7 +72,7 @@ const Home: React.FC = (): JSX.Element => {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className=' min-h-lg max-h-lg electronic-image '>
+            <div className=' min-h-lg max-h-lg rounded-xl electronic-image '>
               <div className='flex justify-center flex-col gap-5 items-center h-600px '>
                 <h2 className='md:text-5xl text-2xl text-white text-center'>
                   Electronic Devices
@@ -87,11 +90,8 @@ const Home: React.FC = (): JSX.Element => {
         </Swiper>
       </div>
 
-      <h3 className='text-3xl font-medium'>
-        Ultimos Productos
-      </h3>
+      <h3 className='text-3xl font-medium'>Ultimos Productos</h3>
       <section className='grid justify-items-center place-content-center grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4'>
-
         {isLoading ? (
           <div
             className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
@@ -100,7 +100,6 @@ const Home: React.FC = (): JSX.Element => {
             <Ring size={80} lineWeight={5} speed={2} color='black' />
           </div>
         ) : (
-
           products?.map((product) => (
             <div
               key={product.id}
